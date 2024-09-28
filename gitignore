@@ -1,4 +1,3 @@
-.pre-commit-config.yaml
 secret_config.py
 /media/
 *.log

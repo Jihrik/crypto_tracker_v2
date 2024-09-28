@@ -5,11 +5,6 @@ ignore = ["E501"]  # Ignore long line errors
 exclude = ["migrations", "__pycache__", "tests/old"]
 extend-ignore = ["F401"]  # Ignore unused imports
 
-exclude = ["migrations", "__pycache__"]
-
-[tool.ruff]
-line-length = 120
-
 [tool.ruff.lint]
 select = ["E501", "I"]
 

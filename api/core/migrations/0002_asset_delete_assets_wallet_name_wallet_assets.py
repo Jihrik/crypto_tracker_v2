@@ -6,40 +6,64 @@ from django.db import models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('core', '0001_initial'),
+        ("core", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Asset',
+            name="Asset",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('amount', models.DecimalField(decimal_places=10, max_digits=20)),
-                ('symbol', models.CharField(max_length=100, unique=True)),
-                ('contract_address', models.CharField(max_length=255)),
-                ('price', models.DecimalField(decimal_places=10, max_digits=20)),
-                ('circulating_supply', models.DecimalField(decimal_places=10, max_digits=20)),
-                ('total_supply', models.DecimalField(decimal_places=10, max_digits=20)),
-                ('max_supply', models.DecimalField(decimal_places=10, max_digits=20)),
-                ('network', models.CharField(max_length=255)),
-                ('ath', models.DecimalField(decimal_places=10, max_digits=20)),
-                ('atl', models.DecimalField(decimal_places=10, max_digits=20)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                (
+                    "amount",
+                    models.DecimalField(decimal_places=10, max_digits=20),
+                ),
+                ("symbol", models.CharField(max_length=100, unique=True)),
+                ("contract_address", models.CharField(max_length=255)),
+                (
+                    "price",
+                    models.DecimalField(decimal_places=10, max_digits=20),
+                ),
+                (
+                    "circulating_supply",
+                    models.DecimalField(decimal_places=10, max_digits=20),
+                ),
+                (
+                    "total_supply",
+                    models.DecimalField(decimal_places=10, max_digits=20),
+                ),
+                (
+                    "max_supply",
+                    models.DecimalField(decimal_places=10, max_digits=20),
+                ),
+                ("network", models.CharField(max_length=255)),
+                ("ath", models.DecimalField(decimal_places=10, max_digits=20)),
+                ("atl", models.DecimalField(decimal_places=10, max_digits=20)),
             ],
         ),
         migrations.DeleteModel(
-            name='Assets',
+            name="Assets",
         ),
         migrations.AddField(
-            model_name='wallet',
-            name='name',
+            model_name="wallet",
+            name="name",
             field=models.CharField(max_length=255, null=True),
         ),
         migrations.AddField(
-            model_name='wallet',
-            name='assets',
-            field=models.ManyToManyField(related_name='Wallets', to='core.asset'),
+            model_name="wallet",
+            name="assets",
+            field=models.ManyToManyField(
+                related_name="Wallets", to="core.asset"
+            ),
         ),
     ]
