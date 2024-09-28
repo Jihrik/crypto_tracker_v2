@@ -1,3 +1,1 @@
-from __future__ import annotations
-
-# Main Models - just register model classes here ...
+from .models import assets, wallet
