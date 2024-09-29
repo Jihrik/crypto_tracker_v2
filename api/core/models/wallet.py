@@ -6,6 +6,7 @@ from ..models.assets import Asset
 
 class Wallet(models.Model):
     name = models.CharField(max_length=255, null=True)
+    address = models.CharField(max_length=500, null=True)
 
     def __str__(self):
         return self.name
