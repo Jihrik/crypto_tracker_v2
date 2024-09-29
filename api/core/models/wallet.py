@@ -1,16 +1,13 @@
-from __future__ import annotations
-
 from django.core.exceptions import ValidationError
 from django.db import models
 
-from api.core.models.assets import Asset
+from ..models.assets import Asset
 
 
 class Wallet(models.Model):
     name = models.CharField(max_length=255, null=True)
-    assets = models.ManyToManyField(Asset, related_name="Wallets")
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
 
     def delete(self, *args, **kwargs):

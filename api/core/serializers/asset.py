@@ -8,7 +8,6 @@ class AssetViewSerializer(serializers.ModelSerializer):
         fields = [
             "id",
             "name", 
-            "amount", 
             "symbol", 
             "contract_address",
             "price", 
