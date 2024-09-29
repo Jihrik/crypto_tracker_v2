@@ -2,12 +2,13 @@ from rest_framework import serializers
 from ..models.assets import Asset
 
 
-class AssetViewSerializer(serializers.Serializer):
+class AssetViewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Asset
         fields = [
+            "id",
             "name", 
-            "surname", 
+            "amount", 
             "symbol", 
             "contract_address",
             "price", 
