@@ -1,7 +1,10 @@
 from django.core.exceptions import ValidationError
 from django.db import models
+from ..managers.wallet import WalletManager
 
 class Wallet(models.Model):
+    objects = WalletManager()
+
     name = models.CharField(max_length=255, null=True)
     address = models.CharField(max_length=500, null=True)
 
