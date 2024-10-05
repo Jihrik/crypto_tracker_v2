@@ -10,11 +10,20 @@ class AssetViewSerializer(serializers.ModelSerializer):
             "name", 
             "symbol", 
             "contract_address",
-            "price", 
+            "current_price",
+            "market_cap",
+            "high_24h",
+            "low_24h",
+            "price_change_24h",
+            "price_change_percentage_24h",
             "circulating_supply",
             "total_supply",
             "max_supply",
-            "network",
             "ath",
-            "atl"
+            "ath_date",
+            "ath_change_percentage",
+            "atl",
+            "atl_date",
+            "atl_change_percentage",
+            "last_updated"
         ]

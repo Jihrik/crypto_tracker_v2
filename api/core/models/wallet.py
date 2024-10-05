@@ -1,9 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.db import models
 
-from ..models.assets import Asset
-
-
 class Wallet(models.Model):
     name = models.CharField(max_length=255, null=True)
     address = models.CharField(max_length=500, null=True)
@@ -12,7 +9,12 @@ class Wallet(models.Model):
         return self.name
 
     def delete(self, *args, **kwargs):
-        if self.assets.exists():
+        from ..models.wallet_asset import WalletAsset
+
+        asset_in_wallet = WalletAsset.objects.filter(wallet=self)
+        if asset_in_wallet.exists():
             raise ValidationError(
-                f"Cannot delete wallet when there are assets inside: {self.assets}"
+                f"Cannot delete wallet when there are assets inside: {[str(asset) for asset in asset_in_wallet]}"
             )
+        super().delete(*args, **kwargs)
+
