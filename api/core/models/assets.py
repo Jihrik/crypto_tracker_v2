@@ -1,12 +1,13 @@
 from django.db import models
-from ..managers.asset import AssetManager
+from api.coingecko_api.models.coin_tickers import CoinTickers
+from api.core.managers.asset import AssetManager
 
 
 class Asset(models.Model):
     objects = AssetManager()
 
-    name = models.CharField(max_length=255)
-    symbol = models.CharField(max_length=100, unique=True)
+    coingecko_id = models.CharField(max_length=255, null=True, unique=True)
+
     contract_address = models.CharField(max_length=255, null=True)
     current_price = models.DecimalField(max_digits=20, decimal_places=10, null=True)
     market_cap = models.DecimalField(max_digits=30, decimal_places=10, null=True)
@@ -18,15 +19,26 @@ class Asset(models.Model):
     circulating_supply = models.DecimalField(max_digits=20, decimal_places=10, null=True)
     total_supply = models.DecimalField(max_digits=20, decimal_places=10, null=True)
     max_supply = models.DecimalField(max_digits=20, decimal_places=10, null=True)
+
     # ATH
     ath = models.DecimalField(max_digits=20, decimal_places=10, null=True)
     ath_date = models.DateTimeField(null=True)
     ath_change_percentage = models.DecimalField(max_digits=10, decimal_places=5, null=True)
-    #ATL
+
+    # ATL
     atl = models.DecimalField(max_digits=20, decimal_places=10, null=True)
     atl_date = models.DateTimeField(null=True)
     atl_change_percentage = models.DecimalField(max_digits=10, decimal_places=5, null=True)
+
     last_updated = models.DateTimeField(null=True)
 
     def __str__(self):
-        return str(self.name)
+        return self.coingecko_id
+
+    @property
+    def symbol(self):
+        return self.coingecko_id.symbol
+
+    @property
+    def name(self):
+        return self.coingecko_id.name
