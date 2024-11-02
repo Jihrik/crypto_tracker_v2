@@ -1,10 +1,12 @@
 from django.db import models
-from api.coingecko_api.models.coin_tickers import CoinTickers
 from api.core.managers.asset import AssetManager
 
 
 class Asset(models.Model):
     objects = AssetManager()
+
+    name = models.CharField(max_length=255, null=True, unique=True)
+    symbol = models.CharField(max_length=255, null=True, unique=True)
 
     coingecko_id = models.CharField(max_length=255, null=True, unique=True)
 
@@ -34,11 +36,3 @@ class Asset(models.Model):
 
     def __str__(self):
         return self.coingecko_id
-
-    @property
-    def symbol(self):
-        return self.coingecko_id.symbol
-
-    @property
-    def name(self):
-        return self.coingecko_id.name

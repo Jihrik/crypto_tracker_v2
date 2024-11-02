@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "api.core",
     "api.coingecko_api",
+    "django_extensions",
 ]
 
 MIDDLEWARE = [

@@ -1,14 +1,15 @@
 from rest_framework import serializers
 from ..models.assets import Asset
 
-
 class AssetViewSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Asset
         fields = [
             "id",
-            "name", 
-            "symbol", 
+            "coingecko_id",
+            "name",
+            "symbol",
             "contract_address",
             "current_price",
             "market_cap",
@@ -27,3 +28,4 @@ class AssetViewSerializer(serializers.ModelSerializer):
             "atl_change_percentage",
             "last_updated"
         ]
+
