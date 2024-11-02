@@ -28,3 +28,16 @@ def get_price():
             coin.current_price = Decimal(price)
             print(coin.id, coin.current_price)
             coin.save()
+
+# def get_price():
+#     coin_list = Asset.objects.filter(current_price__isnull=True)
+#     for coin in coin_list:
+#         price = fetch_price(coin.coingecko_id)
+#         if price is not None:
+#             decimal_price = Decimal(price)
+#             if decimal_price < Decimal('10000000000'):
+#                 coin.current_price = decimal_price
+#                 print(coin.id, coin.current_price)
+#                 coin.save()
+#             else:
+#                 print(f"Price {decimal_price} for {coin.id} is too large and will not be saved.")

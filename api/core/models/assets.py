@@ -11,7 +11,7 @@ class Asset(models.Model):
     coingecko_id = models.CharField(max_length=255, null=True, unique=True)
 
     contract_address = models.CharField(max_length=255, null=True)
-    current_price = models.DecimalField(max_digits=20, decimal_places=10, null=True)
+    current_price = models.DecimalField(max_digits=30, decimal_places=10, null=True)
     market_cap = models.DecimalField(max_digits=30, decimal_places=10, null=True)
     market_cap_rank = models.IntegerField(null=True)
     high_24h = models.DecimalField(max_digits=20, decimal_places=10, null=True)
